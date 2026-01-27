@@ -112,10 +112,7 @@ export default function OurServices() {
             We don't onboard clients, we invite success partners. <br className="hidden md:block" /> 
             <span className="opacity-90">Your goal, our commitment, one team.</span>
           </h2>
-          {/* Mobile Scroll Indicator */}
-          <div className="absolute bottom-10 animate-bounce lg:hidden">
-            <div className="w-1 h-8 bg-gradient-to-b from-[#ff6600] to-transparent"></div>
-          </div>
+          
         </div>
       </div>
 
