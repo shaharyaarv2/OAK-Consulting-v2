@@ -269,7 +269,7 @@ function Home() {
         <div className="w-full max-w-7xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-2">Trusted by <span className={primaryOrange}>Industry Leaders</span></h2>
           <div className="flex justify-center mt-3"><div className="h-1 bg-[#ff6600] w-[120px]"></div></div>
-          <p className="text-center text-white text-lg md:text-xl mt-4 md:mt-6 mb-8 md:mb-10">Partnering with world-class brands to deliver exceptional results</p>
+          <p className="text-center text-white text-lg md:text-xl mt-4 md:mt-6 mb-8 md:mb-10">Partnering with world-class brands to deliver exceptional results.</p>
           <div className="relative bg-white w-full overflow-hidden rounded-lg shadow-inner">
             <div className="flex items-center overflow-hidden">
               <div className="flex items-center animate-scroll py-8 md:py-10 space-x-10">
