@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import emailjs from "@emailjs/browser";
 
 const primaryOrange = "text-[#FF6600]";
 
@@ -15,8 +16,11 @@ function GetInTouch() {
   const sectionRefs = useRef([]);
   const isScrolling = useRef(false);
   const isWaitingForInput = useRef(false);
+  
+  // Ref specifically for EmailJS to grab the form data
+  const formRef = useRef();
 
-  // Initialize refs array
+  // Initialize refs array for scrolling
   if (sectionRefs.current.length !== NUM_SECTIONS) {
     sectionRefs.current = Array(NUM_SECTIONS)
       .fill(0)
@@ -47,43 +51,19 @@ function GetInTouch() {
     const delta = event.deltaY;
     const direction = delta > 0 ? 1 : -1;
 
-    // Allow native scroll past the last section
-    if (direction > 0 && currentSection === NUM_SECTIONS - 1) {
-      return;
-    }
-
-    // Block native scroll for all controlled movements
+    if (direction > 0 && currentSection === NUM_SECTIONS - 1) return;
     event.preventDefault();
 
-    // Lock 1: Prevent section change while the smooth scroll animation is running
-    if (isScrolling.current) {
-      return;
-    }
-
-    // Lock 2: Prevent rapid successive inputs
-    if (isWaitingForInput.current) {
-      return;
-    }
-
-    // Check if the scroll input is large enough to register a section change
-    if (Math.abs(delta) < 10) {
-      return;
-    }
+    if (isScrolling.current || isWaitingForInput.current) return;
+    if (Math.abs(delta) < 10) return;
 
     let newSection = currentSection + direction;
 
-    // Boundary Checks:
-    if (direction < 0 && currentSection === 0) {
-      // Allow native scroll above the first section
-      return;
-    }
+    if (direction < 0 && currentSection === 0) return;
 
-    // Only update section if it's within bounds
     if (newSection >= 0 && newSection < NUM_SECTIONS) {
       isWaitingForInput.current = true;
       setCurrentSection(newSection);
-
-      // Reset the input lock after 800ms for a softer feel
       setTimeout(() => {
         isWaitingForInput.current = false;
       }, 800);
@@ -99,7 +79,7 @@ function GetInTouch() {
 
 
   // ==========================================================
-  // FORM LOGIC
+  // FORM LOGIC (EMAILJS INTEGRATION)
   // ==========================================================
 
   const [formData, setFormData] = useState({
@@ -115,28 +95,40 @@ function GetInTouch() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    
-    // Custom non-alert feedback
-    setFormStatus({
-        message: "Thank you for your message! Submission simulated and data logged to console.",
-        type: 'success'
-    });
 
-    // Optionally reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-    });
+    // Replace these strings with your actual EmailJS credentials
+    const SERVICE_ID = "YOUR_SERVICE_ID";
+    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then((result) => {
+        setFormStatus({
+          message: "Thank you! Your message has been sent successfully.",
+          type: 'success'
+        });
+        
+        // Reset form data
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          message: "",
+        });
+      }, (error) => {
+        console.error("EmailJS Error:", error);
+        setFormStatus({
+          message: "Oops! Something went wrong. Please try again later.",
+          type: 'error'
+        });
+      });
 
     // Auto-dismiss message after 5 seconds
     setTimeout(() => setFormStatus(null), 5000);
   };
 
   // ==========================================================
-  // RENDER
+  // RENDER HELPERS
   // ==========================================================
 
   const FormStatusMessage = () => {
@@ -153,11 +145,9 @@ function GetInTouch() {
                     onClick={() => setFormStatus(null)} 
                     className={`ml-3 -mt-1 p-1 rounded-full ${accentColor} transition`}
                 >
-                    {/* Inline SVG for close icon */}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
-
                 </button>
             </div>
         </div>
@@ -172,7 +162,7 @@ function GetInTouch() {
         {/* 1. HERO SECTION (index 0) */}
         <div 
             ref={sectionRefs.current[0]}
-            className="relative h-screen bg-cover  bg-center flex items-center justify-center"
+            className="relative h-screen bg-cover bg-center flex items-center justify-center"
             style={{ backgroundImage: "url('Contact_us.JPG')" }}
         >
             <div className="absolute inset-0 bg-black/50"></div>
@@ -187,12 +177,11 @@ function GetInTouch() {
             </div>
         </div>
 
-        {/* 2. CONTACT INFO & FORM SECTION (index 1) - Full Screen Centered */}
+        {/* 2. CONTACT INFO & FORM SECTION (index 1) */}
         <div 
             ref={sectionRefs.current[1]}
-            className="h-screen flex items-center justify-center backgroud-color1 p-4"
+            className="h-screen flex items-center justify-center bg-[#0a0a0a] p-4"
         >
-            {/* The inner container is set to max-h-full and overflow-y-auto to gracefully handle small screen sizes without creating nested scrollbars unless absolutely necessary */}
             <div className="max-w-7xl mx-auto w-full max-h-full overflow-y-auto py-10 md:py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                     {/* Left Column: Contact Information */}
@@ -207,7 +196,6 @@ function GetInTouch() {
                             </p>
                         </div>
                         <div className="space-y-8">
-                            {/* Address */}
                             <div className="flex items-start space-x-4">
                                 <div className="text-orange-600 mt-1 flex-shrink-0">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,14 +206,11 @@ function GetInTouch() {
                                 <div>
                                     <h4 className="font-semibold text-white">Our Office</h4>
                                     <p className="text-gray-50">
-                                        Office 33, Floor 9,
-                                        <br /> Business Towers,
-                                        <br /> Burjuman Mall <br />
-                                        Dubai, UAE
+                                        Office 33, Floor 9, Business Towers,<br />
+                                        Burjuman Mall, Dubai, UAE
                                     </p>
                                 </div>
                             </div>
-                            {/* Email */}
                             <div className="flex items-start space-x-4">
                                 <div className="text-orange-600 mt-1 flex-shrink-0">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,28 +219,8 @@ function GetInTouch() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-white">Email Us</h4>
-                                    <a
-                                        href="mailto:contact@oakconsulting.com"
-                                        className="text-blue-600 hover:underline"
-                                    >
+                                    <a href="mailto:contact@oakconsulting.com" className="text-blue-400 hover:underline">
                                         contact@oakconsulting.com
-                                    </a>
-                                </div>
-                            </div>
-                            {/* Phone */}
-                            <div className="flex items-start space-x-4">
-                                <div className="text-orange-600 mt-1 flex-shrink-0">
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-white">Call Us</h4>
-                                    <a
-                                        href="tel:+971501560546"
-                                        className="text-blue-600 hover:underline"
-                                    >
-                                        +971 50 156 0546
                                     </a>
                                 </div>
                             </div>
@@ -263,11 +228,11 @@ function GetInTouch() {
                     </div>
 
                     {/* Right Column: Contact Form */}
-                    <div className="backgroud-color1 p-8 rounded-xl shadow-2xl border border-gray-100">
-                        <h3 className="text-2xl font-bold text-white mb-6">
-                            Send us a message
-                        </h3>
-                        <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-2xl border border-gray-800">
+                        <h3 className="text-2xl font-bold text-white mb-6">Send us a message</h3>
+                        
+                        {/* Attach formRef here */}
+                        <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <input
                                     type="text"
@@ -317,10 +282,10 @@ function GetInTouch() {
             </div>
         </div>
 
-        {/* 3. MAP SECTION (index 2) - Full Screen Centered */}
+        {/* 3. MAP SECTION (index 2) */}
         <div 
             ref={sectionRefs.current[2]}
-            className="h-screen flex flex-col justify-center items-center backgroud-color2 p-4 sm:p-6"
+            className="h-screen flex flex-col justify-center items-center bg-[#0f0f0f] p-4 sm:p-6"
         >
             <div className="max-w-7xl w-full text-center mb-8">
                 <h2 className="text-3xl md:text-5xl font-bold text-white">
@@ -330,11 +295,10 @@ function GetInTouch() {
                     <div className="h-1 bg-[#ff6600] w-20"></div>
                 </div>
             </div>
-            {/* The Map container is set to use a percentage of the viewport height (h-[65vh]) to ensure it fits nicely within the h-screen section, especially on smaller monitors. */}
             <div className="max-w-5xl w-full h-[65vh] mx-auto rounded-xl overflow-hidden shadow-2xl border border-gray-200">
                 <iframe
                     title="Office Location Map"
-                    src="https://maps.google.com/maps?q=Burjuman%20Mall,%20Dubai&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.8252274431713!2d55.3013!3d25.2424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE0JzMyLjYiTiA1NcKwMTgnMDUuMCJF!5e0!3m2!1sen!2sae!4v1700000000000"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
