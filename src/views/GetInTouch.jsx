@@ -97,9 +97,9 @@ function GetInTouch() {
     e.preventDefault();
 
     // Replace these strings with your actual EmailJS credentials
-    const SERVICE_ID = "YOUR_SERVICE_ID";
-    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    const SERVICE_ID = "service_2on9a3t";
+    const TEMPLATE_ID = "template_pmie5lc";
+    const PUBLIC_KEY = "fEpVh6OirU_GMVEKv";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then((result) => {
