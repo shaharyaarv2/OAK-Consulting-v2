@@ -7,7 +7,7 @@ import React from 'react';
 
 const WhatsAppFloatingButton = () => {
     // ⚠️ Replace 'YOUR_WHATSAPP_NUMBER' with your actual number (e.g., 919876543210)
-    const phoneNumber = '971501560546'; 
+    const phoneNumber = '+971557343840'; 
     const message = 'Hello, I came from your website and would like to know more!';
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
