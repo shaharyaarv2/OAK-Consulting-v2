@@ -166,8 +166,8 @@ function GetInTouch() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-white">Call Us</h4>
-                                    <a href="tel:+97141234567" className="text-blue-400 hover:underline transition font-medium">
-                                        +971 4 123 4567
+                                    <a href="tel:+971557343840" className="text-blue-400 hover:underline transition font-medium">
+                                        +971 55 734 3840
                                     </a>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ function GetInTouch() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-white">Email Us</h4>
-                                    <a href="mailto:contact@oakconsulting.com" className="text-blue-400 hover:underline transition font-medium">contact@oakconsulting.com</a>
+                                    <a href="mailto:shaneanthonyjude@gmail.com" className="text-blue-400 hover:underline transition font-medium">shaneanthonyjude@gmail.com</a>
                                 </div>
                             </div>
                         </div>
