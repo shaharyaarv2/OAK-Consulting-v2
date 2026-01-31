@@ -92,10 +92,10 @@ const ImageMatchFooter = () => {
 
               <p>
                 <a
-                  href="tel:+97141234567"
+                  href="tel:+971557343840"
                   className="underline hover:text-gray-400"
                 >
-                  +9771 50 156 0546
+                  +971 55 734 3840
                 </a>
               </p>
             </div>
