@@ -327,7 +327,7 @@ function Home() {
             <Link to={"/getintouch"} className="bg-[#FF6600] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg tracking-wider hover:scale-105">
               Let's Talk
             </Link>
-            <button onClick={() => window.open("https://wa.me/971557343840", "_blank")} className="text-green-500 bg-white border border-green-500 font-bold py-3 px-8 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg tracking-wider">
+            <button onClick={() => window.open("https://wa.me/+971557343840", "_blank")} className="text-green-500 bg-white border border-green-500 font-bold py-3 px-8 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg tracking-wider">
               WhatsApp Us
             </button>
           </div>
