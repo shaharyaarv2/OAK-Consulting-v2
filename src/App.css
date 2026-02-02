@@ -52,7 +52,7 @@ html, body {
   height: 100dvh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .section-height {
     height: auto;
     min-height: 100dvh;

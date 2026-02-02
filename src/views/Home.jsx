@@ -112,7 +112,7 @@ function Home() {
   // === 2. ValueCard Helper Component ===
   const ValueCard = ({ title, description, icon }) => (
     <div className="p-6 h-full flex items-start backgroud-color1 rounded-xl border border-gray-200 shadow-sm transition duration-300 hover:shadow-lg text-black w-full md:max-w-sm">
-      <div className="mr-4 mt-1 flex-shrink-0">
+      <div className="mr-4 mt-1 shrink-0">
         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-[#FF6600] text-2xl ">
           {icon}
         </div>
@@ -167,7 +167,7 @@ function Home() {
       const delta = event.deltaY;
       const direction = delta > 0 ? 1 : -1;
       if (direction > 0 && currentSection === NUM_SECTIONS - 1) return;
-      
+
       event.preventDefault();
       if (isScrolling.current || isWaitingForInput.current || Math.abs(delta) < 10) return;
 
@@ -213,10 +213,10 @@ function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-center text-white">We Make Things <span className="text-[#FF6600]">Happen</span></h2>
           <div className="flex justify-center mt-3"><div className="h-1 bg-[#ff6600] w-[120px]"></div></div>
-          <p className="text-justify md:text-center text-white text-lg md:text-xl leading-relaxed mt-6 md:mt-10">
+          <p className="text-justify  text-white text-lg md:text-xl leading-relaxed mt-6 md:mt-10">
             We are a team of creative and strategic thinkers with decades of PR and marketing experience. We don't just execute campaigns - we bring stories to life, to the right audience and build sustained strategies that deliver impact for the brands, elevating them from the rest of the crowd.
           </p>
-          <p className="text-justify md:text-center text-white text-lg md:text-xl leading-relaxed mt-4 md:mt-5">
+          <p className="text-justify  text-white text-lg md:text-xl leading-relaxed mt-4 md:mt-5">
             Backed by a can-do mindset, we think critically, challenge the brief, and deliver more than promised. As your extended team, we partner with you to build and grow your brand.
           </p>
         </div>
@@ -265,52 +265,77 @@ function Home() {
       </div>
 
       {/* 5. CLIENT LOGOS SECTION */}
-      <div ref={sectionRefs.current[4]} className="section-height flex flex-col justify-center items-center backgroud-color2 p-6 md:p-10">
-        <div className="w-full max-w-7xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-2">Trusted by <span className={primaryOrange}>Industry Leaders</span></h2>
-          <div className="flex justify-center mt-3"><div className="h-1 bg-[#ff6600] w-[120px]"></div></div>
-          <p className="text-center text-white text-lg md:text-xl mt-4 md:mt-6 mb-8 md:mb-10">Partnering with world-class brands to deliver exceptional results.</p>
-          <div className="relative bg-white w-full overflow-hidden rounded-lg shadow-inner">
-            <div className="flex items-center overflow-hidden">
-              <div className="flex items-center animate-scroll py-8 md:py-10 space-x-10">
-                {[...clients, ...clients].map((client, index) => (
-                  <img key={index} src={`clients/${client}`} alt={client} className="h-12 md:h-16 w-auto object-contain hover:grayscale transition duration-300 px-4" />
-                ))}
-              </div>
-            </div>
+      <div
+        ref={sectionRefs.current[4]}
+        className="section-height flex flex-col justify-center items-center backgroud-color2"
+      >
+        {/* Text content stays centered */}
+        <div className="w-full max-w-7xl px-6 md:px-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-2">
+            Trusted by <span className={primaryOrange}>Industry Leaders</span>
+          </h2>
+
+          <div className="flex justify-center mt-3">
+            <div className="h-1 bg-[#ff6600] w-[120px]" />
+          </div>
+
+          <p className="text-center text-white text-lg md:text-xl mt-4 md:mt-6 mb-8 md:mb-10">
+            Partnering with world-class brands to deliver exceptional results.
+          </p>
+        </div>
+
+        {/* FULL-WIDTH logo bar */}
+        <div className="relative bg-white w-screen overflow-hidden shadow-inner">
+          <div className="flex items-center animate-scroll py-8 md:py-10 space-x-10">
+            {[...clients, ...clients].map((client, index) => (
+              <img
+                key={index}
+                src={`clients/${client}`}
+                alt={client}
+                className="h-12 md:h-16 w-auto object-contain hover:grayscale transition duration-300 px-4"
+              />
+            ))}
           </div>
         </div>
       </div>
 
+
       {/* 6. AWARDS & RECOGNITION SECTION */}
-      <div ref={sectionRefs.current[5]} className="section-height flex flex-col justify-center items-center backgroud-color1 p-5 overflow-hidden">
-        <div className="w-full max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-white ">
-            Awards & <span className={primaryOrange}>Recognition</span>
-          </h2>
-          <div className="flex justify-center mt-3"><div className="h-1 bg-[#ff6600] w-[120px]"></div></div>
-          
-          <div className="mt-8 md:mt-10 px-2 overflow-y-auto max-h-[60vh] md:max-h-[70vh] scrollbar-hide">
-            <div className="flex flex-wrap justify-center gap-6">
-              {awardItems.map((award, index) => (
-                <div 
-                  key={index} 
-                  className="p-5 flex flex-col rounded-xl border border-zinc-300/30 text-black shadow-sm bg-white/10 backdrop-blur-md w-full md:w-[calc(33.333%-1.5rem)] min-w-[280px]"
-                >
-                  <div className="flex items-center mb-3">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-full text-black text-2xl ring-2 ring-yellow-500/30 bg-orange-100 flex-shrink-0 mr-3">
-                      {award.icon}
-                    </div>
-                    <h3 className="font-bold text-base md:text-lg text-white leading-tight">
-                      {award.mainTitle}
-                    </h3>
+      <div
+        ref={sectionRefs.current[5]}
+        className="h-auto min-h-dvh lg:h-dvh flex flex-col justify-center items-center backgroud-color1 p-6 lg:p-8 overflow-hidden"
+      >
+        <div className="w-full max-w-6xl mx-auto flex flex-col justify-center h-full">
+          {/* Section Header */}
+          <div className="mb-4 lg:mb-6 text-center shrink-0">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white">
+              Awards & <span className={primaryOrange}>Recognition</span>
+            </h2>
+            <div className="flex justify-center mt-2 lg:mt-3"><div className="h-1 bg-[#ff6600] w-[100px] lg:w-[120px]"></div></div>
+          </div>
+
+          {/* Cards Container */}
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-4">
+            {awardItems.map((award, index) => (
+              <div
+                key={index}
+                className="p-4 lg:p-5 flex flex-col rounded-xl border border-zinc-300/30 shadow-sm bg-white/10 backdrop-blur-md w-full sm:w-[calc(50%-1rem)] lg:w-[calc(32%-1rem)] max-w-sm"
+              >
+                <div className="flex items-center mb-2 lg:mb-3 shrink-0">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-full text-black text-xl lg:text-2xl ring-1 ring-yellow-500/30 bg-orange-100 shrink-0 mr-3">
+                    {award.icon}
                   </div>
-                  <p className="text-sm text-zinc-200 leading-relaxed text-justify">
+                  <h3 className="font-bold text-sm lg:text-base text-white leading-tight">
+                    {award.mainTitle}
+                  </h3>
+                </div>
+                <div className="flex-grow overflow-visible">
+                  <p className="text-xs lg:text-[13px] text-zinc-100 leading-tight lg:leading-normal text-justify opacity-90">
                     {award.subtitle}
                   </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -324,7 +349,7 @@ function Home() {
             Let's craft a story that resonates with your audience and delivers measurable results. Your success is our mission.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-5 mt-10">
-            <Link to={"/getintouch"} className="bg-[#FF6600] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg tracking-wider hover:scale-105">
+            <Link to={"/getintouch"} className="bg-[#FF6600] cursor-pointer text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg tracking-wider hover:scale-105">
               Let's Talk
             </Link>
             <button onClick={() => window.open("https://wa.me/+971557343840", "_blank")} className="text-green-500 bg-white border border-green-500 font-bold py-3 px-8 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg tracking-wider">

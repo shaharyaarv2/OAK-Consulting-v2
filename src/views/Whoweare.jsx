@@ -14,7 +14,7 @@ import {
 } from "@tabler/icons-react";
 
 export default function Whoweare() {
-  const NUM_SECTIONS = 5; 
+  const NUM_SECTIONS = 5;
   const [currentSection, setCurrentSection] = useState(0);
   const sectionRefs = useRef([]);
 
@@ -82,64 +82,64 @@ export default function Whoweare() {
         className="section-height relative bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: "url('Who_we_are.JPG')" }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative text-center text-white max-w-4xl mx-auto px-6">
-          <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight leading-tight">
-            Driving Impact
-            <br /> <span className="text-[#FF6600]"> Building Brands </span>
-          </h1>
-          <h2 className=" text-base md:text-xl text-white mt-4 font-medium opacity-90">
-            Why Choose Oak Consulting PR?
-          </h2>
+        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center p-4 z-10">
+          <div className="relative text-center text-white px-4 max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+              Driving Impact
+              <br /> <span className="text-[#FF6600]"> Building Brands </span>
+            </h1>
+            <h2 className="mt-6 text-base md:text-xl text-white font-medium opacity-90">
+              Why Choose Oak Consulting PR?
+            </h2>
+          </div>
         </div>
       </div>
-      
-      {/* 2. EXPERTISE SECTION */}
-      <div 
-        ref={sectionRefs.current[1]} 
-        className="section-height flex flex-col backgroud-color1 items-center justify-center p-6 md:py-10"
+
+      <div
+        ref={sectionRefs.current[1]}
+        className="section-height flex flex-col backgroud-color1 items-center justify-center p-6 md:p-10"
       >
         <div className="flex flex-col items-center w-full max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-center text-white ">
             Our <span className={primaryOrange}>Expertise</span>
           </h2>
-          <div className="flex justify-center mt-3">
-            <div className="h-1 bg-[#ff6600] w-20 md:w-30"></div>
+          <div className="flex justify-center mt-3 mb-8 md:mb-10">
+            <div className="h-1 bg-[#ff6600] w-[120px]"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-10 md:mt-16 w-full">
-            <div className="p-5 md:p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full">
+            <div className="p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
               <div className="text-orange-500 flex-shrink-0 mr-4 pt-1"><IconEye stroke={2} size={28} /></div>
-              <div><h3 className="text-lg md:text-xl font-bold mb-2">Enhanced Brand Visibility</h3><p className="text-sm md:text-base text-zinc-100 text-justify">We amplify your brand across digital and traditional channels, ensuring it reaches the right audience at the right time.</p></div>
+              <div><h3 className="text-lg md:text-xl font-bold mb-2">Enhanced Brand Visibility</h3><p className="text-sm md:text-base text-zinc-100 text-justify leading-relaxed">We amplify your brand across digital and traditional channels, ensuring it reaches the right audience at the right time.</p></div>
             </div>
-            <div className="p-5 md:p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
+            <div className="p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
               <div className="text-orange-500 flex-shrink-0 mr-4 pt-1"><IconTrendingUp stroke={2} size={28} /></div>
-              <div><h3 className="text-lg md:text-xl font-bold mb-2">Business Growth & Sales</h3><p className="text-sm md:text-base text-zinc-100 text-justify">Our integrated PR and marketing strategy drive engagement, generate leads and convert visibility into tangible business results.</p></div>
+              <div><h3 className="text-lg md:text-xl font-bold mb-2">Business Growth & Sales</h3><p className="text-sm md:text-base text-zinc-100 text-justify leading-relaxed">Our integrated PR and marketing strategy drive engagement, generate leads and convert visibility into tangible business results.</p></div>
             </div>
-            <div className="p-5 md:p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
+            <div className="p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
               <div className="text-orange-500 flex-shrink-0 mr-4 pt-1"><IconSpeakerphone stroke={2} size={28} /></div>
-              <div><h3 className="text-lg md:text-xl font-bold mb-2">Greater Brand Awareness</h3><p className="text-sm md:text-base text-zinc-100 text-justify">Our consistent efforts enhance the visibility and awareness of the brand, reaching the right audience and generating a better recall for your brand.</p></div>
+              <div><h3 className="text-lg md:text-xl font-bold mb-2">Greater Brand Awareness</h3><p className="text-sm md:text-base text-zinc-100 text-justify leading-relaxed">Our consistent efforts enhance the visibility and awareness of the brand, reaching the right audience and generating a better recall for your brand.</p></div>
             </div>
-            <div className="p-5 md:p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
+            <div className="p-6 rounded-xl border border-white/20 flex items-start bg-white/5 backdrop-blur-sm text-white transition hover:bg-white/10">
               <div className="text-orange-500 flex-shrink-0 mr-4 pt-1"><IconShieldHalfFilled stroke={2} size={28} /></div>
-              <div><h3 className="text-lg md:text-xl font-bold mb-2">Sustained Positive Reputation</h3><p className="text-sm md:text-base text-zinc-100 text-justify">Through proactive reputation management and strategic communications, we help maintain a trustworthy and respected brand image.</p></div>
+              <div><h3 className="text-lg md:text-xl font-bold mb-2">Sustained Positive Reputation</h3><p className="text-sm md:text-base text-zinc-100 text-justify leading-relaxed">Through proactive reputation management and strategic communications, we help maintain a trustworthy and respected brand image.</p></div>
             </div>
           </div>
         </div>
       </div>
 
       {/* 3. COMMITMENT SECTION */}
-      <div 
-        ref={sectionRefs.current[2]} 
-        className="section-height backgroud-color2 flex flex-col justify-center items-center p-6 md:py-10"
+      <div
+        ref={sectionRefs.current[2]}
+        className="section-height backgroud-color2 flex flex-col justify-center items-center p-6 md:p-10"
       >
         <div className="w-full max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-5xl text-white font-bold text-center">
-            Our Commitment,<span className={primaryOrange}>Your Brand</span>
+          <h2 className="text-3xl md:text-5xl text-white font-bold text-center">
+            Our Commitment,<br className="sm:hidden" /><span className={primaryOrange}>Your Brand</span>
           </h2>
 
-          <div className="flex justify-center mt-3">
-            <div className="h-1 bg-[#ff6600] w-20 md:w-30"></div>
+          <div className="flex justify-center mt-3 mb-6 md:mb-10">
+            <div className="h-1 bg-[#ff6600] w-[120px]"></div>
           </div>
 
           <p className="text-base md:text-xl text-white mx-auto py-6 text-center font-medium max-w-3xl">
@@ -177,10 +177,10 @@ export default function Whoweare() {
           </div>
         </div>
       </div>
-      
+
       {/* 5. CTA SECTION */}
-      <div 
-        ref={sectionRefs.current[4]} 
+      <div
+        ref={sectionRefs.current[4]}
         className="section-height backgroud-color1 flex flex-col justify-center items-center p-6 md:p-10"
       >
         <div className="text-center text-white max-w-4xl">
@@ -198,13 +198,13 @@ export default function Whoweare() {
             Your success is our mission.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-10">
-            <Link to={'/getintouch'} className="bg-[#FF6600] text-white font-bold py-3 px-10 rounded-full text-lg shadow-lg hover:scale-105 transition duration-300">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-5 mt-10">
+            <Link to={'/getintouch'} className="bg-[#FF6600] text-white font-bold py-3 px-10 rounded-full text-lg shadow-lg hover:scale-105 transition duration-300 tracking-wider">
               Get Started
             </Link>
             <button
               onClick={() => window.open("https://wa.me/+971557343840", "_blank")}
-              className="text-green-500 bg-white border border-green-500 font-bold py-3 px-10 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg"
+              className="text-green-500 bg-white border cursor-pointer border-green-500 font-bold py-3 px-10 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg tracking-wider"
             >
               WhatsApp Us
             </button>
