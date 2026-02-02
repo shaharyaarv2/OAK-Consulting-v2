@@ -118,7 +118,7 @@ const ImageMatchFooter = () => {
               Follow
             </h4>
             <ul className="text-sm font-normal space-y-1">
-              <FooterLink href="#"><IconBrandLinkedinFilled /> LinkedIn</FooterLink>
+              <FooterLink href="https://www.linkedin.com/in/nirmaladsouza?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><IconBrandLinkedinFilled /> LinkedIn</FooterLink>
               <FooterLink href="https://x.com/OAKConsulting"><IconBrandXFilled/> Twitter</FooterLink>
             </ul>
           </div>
