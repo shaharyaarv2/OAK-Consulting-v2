@@ -236,7 +236,7 @@ export default function OurServices() {
               Start Exploring
             </Link>
             <button
-              onClick={() => window.open("https://wa.me/971501560546", "_blank")}
+              onClick={() => window.open("https://wa.me/+971557343840", "_blank")}
               className="bg-transparent border-2 border-green-500 text-green-500 font-bold py-4 px-12 rounded-full text-xl hover:bg-green-500 hover:text-white transition-all transform hover:scale-105"
             >
               WhatsApp Us
