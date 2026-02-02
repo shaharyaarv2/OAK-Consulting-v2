@@ -203,7 +203,7 @@ export default function Whoweare() {
               Get Started
             </Link>
             <button
-              onClick={() => window.open("https://wa.me/971501560546", "_blank")}
+              onClick={() => window.open("https://wa.me/+971557343840", "_blank")}
               className="text-green-500 bg-white border border-green-500 font-bold py-3 px-10 rounded-full text-lg hover:bg-green-500 hover:text-white transition duration-300 shadow-lg"
             >
               WhatsApp Us
