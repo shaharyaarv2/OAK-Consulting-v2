@@ -104,7 +104,7 @@ const ImageMatchFooter = () => {
           {/* COLUMN 2: Our Work Links */}
           <div className="flex flex-col md:col-span-1">
             <h4 className="text-base font-normal text-white mb-3 tracking-wide">
-              Our Work
+              OAK Consulting
             </h4>
             <ul className="text-sm font-normal space-y-1">
               <FooterLink href="/whoweare">Who We Are</FooterLink>

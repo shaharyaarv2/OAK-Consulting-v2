@@ -156,7 +156,7 @@ function GetInTouch() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white">Our Office</h4>
-                    <p className="text-gray-300">Office 33, Floor 9, Business Towers,<br />Burjuman Mall, Dubai, UAE</p>
+                    <p className="text-black">Office 33, Floor 9, Business Towers,<br />Burjuman Mall, Dubai, UAE</p>
                   </div>
                 </div>
 
@@ -169,7 +169,7 @@ function GetInTouch() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white">Call Us</h4>
-                    <a href="tel:+971557343840" className="text-blue-400 hover:underline transition font-medium">
+                    <a href="tel:+971557343840" className="text-black hover:underline transition font-medium">
                       +971 55 734 3840
                     </a>
                   </div>
@@ -181,7 +181,7 @@ function GetInTouch() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-white">Email Us</h4>
-                    <a href="mailto:shaneanthonyjude@gmail.com" className="text-blue-400 hover:underline transition font-medium">shaneanthonyjude@gmail.com</a>
+                    <a href="mailto:shaneanthonyjude@gmail.com" className="text-black hover:underline transition font-medium">shaneanthonyjude@gmail.com</a>
                   </div>
                 </div>
               </div>

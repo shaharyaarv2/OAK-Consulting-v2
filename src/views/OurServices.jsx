@@ -247,7 +247,7 @@ export default function OurServices() {
             <div className="h-1 bg-[#ff6600] w-[120px]"></div>
           </div>
           <p className="text-lg md:text-xl text-center text-white mb-8 md:mb-10 max-w-3xl">
-            With a strategic presence across the Middle East, North Africa, and South Asia...
+            With a strategic presence across the Middle East, North Africa, and South Asia
           </p>
         </div>
 
@@ -276,7 +276,7 @@ export default function OurServices() {
         className="section-height flex flex-col justify-center backgroud-color2 items-center p-6 md:p-10 relative"
       >
         <div className="relative z-10 text-center text-white max-w-4xl">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
             Curious About
             <span className="text-[#FF6600]"> What We Can Do for You ?</span>
           </h2>
