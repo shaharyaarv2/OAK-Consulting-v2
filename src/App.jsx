@@ -7,6 +7,7 @@ import OurServices from './views/OurServices';
 import Whoweare from './views/Whoweare';
 import GetInTouch from './views/GetInTouch'
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // 💥 IMPORT THE NEW COMPONENT HERE
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'; 
@@ -15,6 +16,7 @@ import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div>
         <Navbar />
         <Routes>
